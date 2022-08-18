@@ -1,7 +1,10 @@
+import ToDo from "./toDo";
+
 export default function toDoDiv() {
   let container = document.querySelector(".toDo-container");
   let divContainer = document.createElement("div");
   let buttonContainer = document.createElement("div");
+  divContainer.classList = "addTaskContainer";
   createInput(divContainer, "text", "input", "input", "Add a task", "input");
   createButton(buttonContainer, "Add", "add-task-btn");
   createButton(buttonContainer, "cancel", "cancel-task-btn");
@@ -32,7 +35,10 @@ function createInput(append, type, className, id, placeholder, name) {
 function createTask() {
   let teste = document.querySelector(".teste");
   let container = document.createElement("div");
+  let divContainer = document.querySelector(".addTaskContainer");
   let input = document.getElementById("input").value;
   container.innerHTML = input;
+  ToDo.title = input;
+  divContainer.innerHTML = "";
   teste.appendChild(container);
 }
