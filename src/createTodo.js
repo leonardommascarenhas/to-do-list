@@ -7,12 +7,15 @@ export default function toDoDiv() {
   createButton(buttonContainer, "cancel", "cancel-task-btn");
   divContainer.appendChild(buttonContainer);
   container.appendChild(divContainer);
+  let add = document.getElementById("add-task-btn");
+  add.addEventListener("click", createTask);
 }
 
 function createButton(append, text, id) {
   let button = document.createElement("button");
   button.innerText = text;
   button.id = id;
+  button.className = id;
   append.appendChild(button);
 }
 
@@ -24,4 +27,12 @@ function createInput(append, type, className, id, placeholder, name) {
   input.placeholder = placeholder;
   input.name = name;
   append.appendChild(input);
+}
+
+function createTask() {
+  let teste = document.querySelector(".teste");
+  let container = document.createElement("div");
+  let input = document.getElementById("input").value;
+  container.innerHTML = input;
+  teste.appendChild(container);
 }
