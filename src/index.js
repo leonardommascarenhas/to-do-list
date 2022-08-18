@@ -1,7 +1,7 @@
 import ToDo from "./toDo";
 import toDoDiv from "./createTodo";
 
-let addTask = document.getElementById("add-task-btn");
-let main = document.querySelector("main");
+let createTask = document.getElementById("create-task-btn");
+let add = document.getElementById("add-task-btn");
 
-addTask.addEventListener("click", toDoDiv);
+createTask.addEventListener("click", toDoDiv);

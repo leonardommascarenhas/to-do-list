@@ -4,15 +4,15 @@ export default function toDoDiv() {
   let buttonContainer = document.createElement("div");
   createInput(divContainer, "text", "input", "input", "Add a task", "input");
   createButton(buttonContainer, "Add", "add-task-btn");
-  createButton(buttonContainer, "Delete", "delete-task-btn");
+  createButton(buttonContainer, "cancel", "cancel-task-btn");
   divContainer.appendChild(buttonContainer);
   container.appendChild(divContainer);
 }
 
-function createButton(append, text, className) {
+function createButton(append, text, id) {
   let button = document.createElement("button");
   button.innerText = text;
-  button.className = className;
+  button.id = id;
   append.appendChild(button);
 }
 
