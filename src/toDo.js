@@ -1,8 +1,18 @@
-export default class ToDo {
-  constructor(title, description, dueDate, priority) {
-    this.title = title;
-    this.description = description;
+export default class Task {
+  constructor(name, dueDate) {
+    this.name = name;
     this.dueDate = dueDate;
-    this.priority = priority;
+  }
+  setName(name) {
+    this.name = name;
+  }
+  getName() {
+    return this.name;
+  }
+  setDate(dueDate) {
+    this.dueDate = dueDate;
+  }
+  getDate() {
+    return this.dueDate;
   }
 }
