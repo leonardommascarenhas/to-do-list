@@ -2,17 +2,19 @@ import Task from "./toDo";
 
 export default function createTaskContainer() {
   let container = document.querySelector(".create-task-container");
-  createButton(container, "add-btn", "ADD");
-  createButton(container, "cancel-btn", "cancel");
-  createInput(container, "text", "input", "input", "text", "add task");
-  let add = document.getElementById("add-btn");
-  add.addEventListener("click", createTask);
+  let taskHolder = document.createElement("div");
+  taskHolder.classList.add("input-container");
+  createButton(taskHolder, "add-btn", "ADD", createTask);
+  createButton(taskHolder, "cancel-btn", "cancel", cancelTask);
+  createInput(taskHolder, "text", "input", "input", "text", "add task");
+  container.appendChild(taskHolder);
 }
 
-function createButton(append, id, text) {
+function createButton(append, id, text, functionality) {
   let button = document.createElement("button");
   button.innerText = text;
   button.id = id;
+  button.onclick = functionality;
   append.appendChild(button);
 }
 
@@ -37,3 +39,10 @@ function createTask() {
   createContainer.innerHTML = input;
   container.appendChild(createContainer);
 }
+
+function cancelTask() {
+  let container = document.querySelector(".input-container");
+  container.remove();
+}
+
+function createPriority() {}
