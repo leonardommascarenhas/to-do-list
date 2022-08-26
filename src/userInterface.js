@@ -16,10 +16,11 @@ export default function createTaskContainer() {
   container.appendChild(taskHolder);
 }
 
-function createButton(append, id, text, functionality) {
+function createButton(append, id, text, functionality, type) {
   let button = document.createElement("button");
   button.innerText = text;
   button.id = id;
+  button.type = type;
   button.onclick = functionality;
   append.appendChild(button);
 }
@@ -34,21 +35,26 @@ function createInput(append, type, className, name, id, placeholder) {
   append.appendChild(input);
 }
 
+function showTask(append, innerHTML) {
+  let createContainer = document.createElement("div");
+  let task = document.createElement("p");
+  createButton(createContainer, "delete-btn", " ", cancelTask, "radio");
+  task.innerHTML = innerHTML;
+  createContainer.appendChild(task);
+  append.appendChild(createContainer);
+}
+
 function createTask() {
   let input = document.getElementById("text").value;
   let container = document.querySelector(".task-container");
-  let createContainer = document.createElement("div");
   let taskContainer = document.querySelector(".create-task-container");
   allTasks.newTask(input);
   console.log(allTasks);
   taskContainer.innerHTML = "";
-  createContainer.innerHTML = input;
-  container.appendChild(createContainer);
+  showTask(container, input);
 }
 
 function cancelTask() {
   let container = document.querySelector(".input-container");
   container.remove();
 }
-
-function showTask() {}
