@@ -1,4 +1,7 @@
+import Projects from "./storage";
 import Task from "./toDo";
+
+let allTasks = new Projects();
 
 export default function createTaskContainer() {
   let container = document.querySelector(".create-task-container");
@@ -36,9 +39,8 @@ function createTask() {
   let container = document.querySelector(".task-container");
   let createContainer = document.createElement("div");
   let taskContainer = document.querySelector(".create-task-container");
-  const objeto = new Task();
-  objeto.setName(input);
-  objeto.pushTask();
+  allTasks.newTask(input);
+  console.log(allTasks);
   taskContainer.innerHTML = "";
   createContainer.innerHTML = input;
   container.appendChild(createContainer);

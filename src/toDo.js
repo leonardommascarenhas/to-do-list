@@ -1,5 +1,3 @@
-let projeto = [];
-
 export default class Task {
   constructor(name, date = "No date") {
     this.name = name;
@@ -16,9 +14,5 @@ export default class Task {
   }
   getDate() {
     return this.date;
-  }
-  pushTask() {
-    projeto.push(this.name);
-    console.log(projeto);
   }
 }
