@@ -12,6 +12,10 @@ export default class Projects {
   getProjeto() {
     return this.projeto;
   }
+  removeTask(e) {
+    let index = this.projeto.indexOf(e);
+    this.projeto.splice(index, 1);
+  }
   numberOfTask() {
     return this.projeto.length;
   }

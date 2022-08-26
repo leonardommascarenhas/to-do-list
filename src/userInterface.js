@@ -35,11 +35,20 @@ function createInput(append, type, className, name, id, placeholder) {
   append.appendChild(input);
 }
 
+function removeTaskFromLibrary(e) {
+  e.preventDefault();
+  let taskContainer = e.target.parentElement;
+  taskContainer.remove();
+  allTasks.removeTask(e);
+  console.log(allTasks);
+}
+
 function showTask(append, innerHTML) {
   let createContainer = document.createElement("div");
   let task = document.createElement("p");
-  createButton(createContainer, "delete-btn", " ", cancelTask, "radio");
+  createButton(createContainer, "delete-btn", " ", removeTaskFromLibrary, "radio");
   task.innerHTML = innerHTML;
+  createContainer.classList.add("added-task");
   createContainer.appendChild(task);
   append.appendChild(createContainer);
 }
