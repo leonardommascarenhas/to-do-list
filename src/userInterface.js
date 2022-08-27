@@ -47,7 +47,7 @@ function removeTaskFromLibrary(e) {
   console.log(allTasks);
 }
 
-function showTask(append, innerHTML) {
+function showTask(append, innerHTML, date) {
   let createContainer = document.createElement("div");
   let task = document.createElement("p");
   createButton(createContainer, "delete-btn", " ", removeTaskFromLibrary, "radio");
@@ -55,6 +55,7 @@ function showTask(append, innerHTML) {
   createContainer.classList.add("added-task");
   createContainer.appendChild(task);
   createInput(createContainer, "date", "input", "input", "date", "add task");
+
   append.appendChild(createContainer);
 }
 
@@ -67,7 +68,6 @@ function createTask() {
   taskContainer.innerHTML = "";
   showTask(container, input);
 }
-
 function cancelTask() {
   let container = document.querySelector(".input-container");
   container.remove();
