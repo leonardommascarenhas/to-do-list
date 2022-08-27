@@ -5,15 +5,19 @@ let allTasks = new Projects();
 
 export default function createTaskContainer() {
   let container = document.querySelector(".create-task-container");
-  let taskHolder = document.createElement("div");
-  let buttonContainer = document.createElement("div");
-  buttonContainer.classList.add("button-container");
-  taskHolder.classList.add("input-container");
-  createButton(buttonContainer, "add-btn", "ADD", createTask);
-  createButton(buttonContainer, "cancel-btn", "cancel", cancelTask);
-  createInput(taskHolder, "text", "input", "input", "text", "add task");
-  taskHolder.appendChild(buttonContainer);
-  container.appendChild(taskHolder);
+  if (container.querySelector(".input-container") == null) {
+    let taskHolder = document.createElement("div");
+    let buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+    taskHolder.classList.add("input-container");
+    createButton(buttonContainer, "add-btn", "ADD", createTask);
+    createButton(buttonContainer, "cancel-btn", "cancel", cancelTask);
+    createInput(taskHolder, "text", "input", "input", "text", "add task");
+    taskHolder.appendChild(buttonContainer);
+    container.appendChild(taskHolder);
+  } else {
+    alert("you need to create the task first");
+  }
 }
 
 function createButton(append, id, text, functionality, type) {
@@ -50,6 +54,7 @@ function showTask(append, innerHTML) {
   task.innerHTML = innerHTML;
   createContainer.classList.add("added-task");
   createContainer.appendChild(task);
+  createInput(createContainer, "date", "input", "input", "date", "add task");
   append.appendChild(createContainer);
 }
 
