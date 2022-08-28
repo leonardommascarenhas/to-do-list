@@ -4,11 +4,18 @@ export default class Projects {
   constructor() {
     this.projeto = [];
   }
-  newTask(name) {
+  pushTask(name) {
     let p = new Task();
     p.setName(name);
-    p.setDate(Task.prototype.date);
     this.projeto.push(p);
+    return p;
+  }
+  newTask(e, name, date) {
+    let p = new Task();
+    p.setName(name);
+    p.setDate(date);
+    let index = this.projeto.indexOf(e);
+    this.projeto.splice(index, 1, p);
     return p;
   }
   removeTask(e) {

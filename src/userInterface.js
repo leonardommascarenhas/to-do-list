@@ -55,19 +55,19 @@ function showTask(append, innerHTML) {
   task.innerHTML = innerHTML;
   createContainer.classList.add("added-task");
   createContainer.appendChild(task);
+  append.appendChild(createContainer);
   const dateInput = createInput(createContainer, "date", "input", "input", "date", "add task");
   dateInput.addEventListener("change", (e) => {
-    Task.prototype.setDate(e.target.value);
+    allTasks.newTask(e, task.innerHTML, e.target.value);
     console.log(allTasks);
   });
-  append.appendChild(createContainer);
 }
 
 function createTask() {
   let input = document.getElementById("text").value;
   let container = document.querySelector(".task-container");
   let taskContainer = document.querySelector(".create-task-container");
-  allTasks.newTask(input);
+  allTasks.pushTask(input);
   console.log(allTasks);
   taskContainer.innerHTML = "";
   showTask(container, input);
