@@ -37,6 +37,7 @@ function createInput(append, type, className, name, id, placeholder) {
   input.name = name;
   input.placeholder = placeholder;
   append.appendChild(input);
+  return input;
 }
 
 function removeTaskFromLibrary(e) {
@@ -47,15 +48,18 @@ function removeTaskFromLibrary(e) {
   console.log(allTasks);
 }
 
-function showTask(append, innerHTML, date) {
+function showTask(append, innerHTML) {
   let createContainer = document.createElement("div");
   let task = document.createElement("p");
   createButton(createContainer, "delete-btn", " ", removeTaskFromLibrary, "radio");
   task.innerHTML = innerHTML;
   createContainer.classList.add("added-task");
   createContainer.appendChild(task);
-  createInput(createContainer, "date", "input", "input", "date", "add task");
-
+  const dateInput = createInput(createContainer, "date", "input", "input", "date", "add task");
+  dateInput.addEventListener("change", (e) => {
+    Task.prototype.setDate(e.target.value);
+    console.log(allTasks);
+  });
   append.appendChild(createContainer);
 }
 
