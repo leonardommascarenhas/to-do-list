@@ -10,11 +10,13 @@ export default class Projects {
     this.projeto.push(p);
     return p;
   }
-  newTask(e, name, date) {
+  newTask(name, date) {
     let p = new Task();
     p.setName(name);
     p.setDate(date);
-    let index = this.projeto.indexOf(e);
+    let index = this.projeto.findIndex((todo) => {
+      return todo.name === p.name;
+    });
     this.projeto.splice(index, 1, p);
     return p;
   }

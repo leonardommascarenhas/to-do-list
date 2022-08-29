@@ -55,12 +55,13 @@ function showTask(append, innerHTML) {
   task.innerHTML = innerHTML;
   createContainer.classList.add("added-task");
   createContainer.appendChild(task);
-  append.appendChild(createContainer);
   const dateInput = createInput(createContainer, "date", "input", "input", "date", "add task");
   dateInput.addEventListener("change", (e) => {
-    allTasks.newTask(e, task.innerHTML, e.target.value);
+    let date = e.target.value;
+    allTasks.newTask(task.innerHTML, date);
     console.log(allTasks);
   });
+  append.appendChild(createContainer);
 }
 
 function createTask() {
