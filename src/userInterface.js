@@ -63,7 +63,18 @@ function showTask(append, innerHTML) {
   });
   append.appendChild(createContainer);
 }
-
+export function displayArray() {
+  if (localStorage.getItem("myArray") !== null) {
+    let taskContainer = document.querySelector(".task-container");
+    let myObj = JSON.parse(localStorage.getItem("myArray"));
+    myObj.forEach((item) => {
+      showTask(taskContainer, item.name);
+      document.querySelector("#date").value = item.date;
+      allTasks.teste(item.name, item.date);
+    });
+    console.log(allTasks);
+  }
+}
 function createTask() {
   let input = document.getElementById("text").value;
   let container = document.querySelector(".task-container");
