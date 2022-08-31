@@ -48,15 +48,16 @@ function removeTaskFromLibrary(e) {
   console.log(allTasks);
 }
 
-function showTask(append, innerHTML) {
+function showTask(append, innerHTML, dateInput) {
   let createContainer = document.createElement("div");
   let task = document.createElement("p");
   createButton(createContainer, "delete-btn", " ", removeTaskFromLibrary, "radio");
   task.innerHTML = innerHTML;
   createContainer.classList.add("added-task");
   createContainer.appendChild(task);
-  const dateInput = createInput(createContainer, "date", "input", "input", "date", "add task");
-  dateInput.addEventListener("change", (e) => {
+  const dateInputt = createInput(createContainer, "date", "input", "input", "date", "add task");
+  dateInputt.value = dateInput;
+  dateInputt.addEventListener("change", (e) => {
     let date = e.target.value;
     allTasks.newTask(task.innerHTML, date);
     console.log(allTasks);
@@ -68,9 +69,8 @@ export function displayArray() {
     let taskContainer = document.querySelector(".task-container");
     let myObj = JSON.parse(localStorage.getItem("myArray"));
     myObj.forEach((item) => {
-      showTask(taskContainer, item.name);
-      document.querySelector("#date").value = item.date;
-      allTasks.teste(item.name, item.date);
+      showTask(taskContainer, item.name, item.date);
+      allTasks.setTask(item.name, item.date);
     });
     console.log(allTasks);
   }
