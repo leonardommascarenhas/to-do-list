@@ -34,7 +34,10 @@ export default class Projects {
   }
   removeTask(e) {
     let index = this.projeto.indexOf(e);
+    let newArray = JSON.parse(localStorage.getItem("myArray"));
     this.projeto.splice(index, 1);
+    newArray.splice(index, 1);
+    this.storeArray(newArray);
   }
   numberOfTask() {
     return this.projeto.length;
